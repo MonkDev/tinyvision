@@ -1,0 +1,65 @@
+#tinyvision {
+  .tv-items {
+    list-style: none;
+    margin: 10px auto;
+    width: 660px;
+  }
+
+  .tv-item {
+    float: left;
+    margin: 10px;
+
+    &.selected {
+      .tv-item-image {
+        border: 2px solid #0088cc !important;
+        padding: 4px;
+      }
+
+      .tv-item-name {
+        color: #0088cc !important;
+      }
+    }
+  }
+
+  .tv-item-link {
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+
+    &:hover {
+      .tv-item-image {
+        border-color: #9e9e9e;
+      }
+
+      .tv-item-name {
+        color: #000;
+      }
+    }
+  }
+
+  .tv-item-image {
+    border: 1px solid #eee;
+    height: 100px;
+    line-height: 100px;
+    padding: 5px;
+    text-align: center;
+    width: 100px;
+
+    img {
+      max-height: 100px;
+      max-width: 100px;
+      min-height: 1px;
+      min-width: 1px;
+      vertical-align: middle;
+    }
+  }
+
+  .tv-item-name {
+    color: #9e9e9e;
+    padding: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100px;
+  }
+}

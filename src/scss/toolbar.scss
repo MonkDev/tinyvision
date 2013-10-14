@@ -1,0 +1,61 @@
+#tinyvision {
+  .tv-toolbar {
+    border-bottom: 1px solid #9e9e9e;
+    left: 0;
+    padding: 10px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .tv-toolbar-left {
+    float: left;
+
+    > * {
+      float: left;
+      margin-right: 3px;
+    }
+  }
+
+  .tv-toolbar-right {
+    float: right;
+
+    > * {
+      float: left;
+      margin-left: 3px;
+    }
+  }
+
+  .tv-upload .tv-icon-upload {
+    margin-right: 3px;
+  }
+
+  .tv-search {
+    position: relative;
+
+    .tv-icon-search {
+      cursor: text;
+      left: 11px;
+      position: absolute;
+      top: 6px;
+    }
+
+    input {
+      padding-left: 35px;
+      width: 200px;
+
+      &.placeholder {
+        color: #aaa;
+      }
+    }
+  }
+
+  .tv-refresh-loading .tv-icon-refresh {
+    -webkit-animation: spin 2s linear infinite;
+    -moz-animation: spin 2s linear infinite;
+    -ms-animation: spin 2s linear infinite;
+    -o-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+}

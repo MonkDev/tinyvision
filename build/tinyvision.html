@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TinyVision</title>
+    <link rel="stylesheet" href="tinyvision.css">
+  </head>
+  <body>
+    <div class="mce-container" id="tinyvision">
+      <div class="tv-toolbar mce-panel cf">
+        <div class="tv-toolbar-left">
+          <div class="tv-upload mce-widget mce-btn">
+            <button type="button" id="upload"><span class="tv-icon tv-icon-upload"></span> Upload</button>
+          </div>
+        </div>
+        <div class="tv-toolbar-right">
+          <div class="tv-search mce-widget">
+            <span class="tv-icon tv-icon-search"></span>
+            <input class="mce-textbox" id="search" placeholder="Search">
+          </div>
+          <div class="tv-refresh mce-widget mce-btn">
+            <button type="button" id="refresh"><span class="tv-icon tv-icon-refresh"></span></button>
+          </div>
+        </div>
+      </div>
+      <div class="tv-notice" id="notice"></div>
+      <ol class="tv-items cf" id="items"></ol>
+    </div>
+    <script src="tinyvision.min.js"></script>
+  </body>
+</html>
