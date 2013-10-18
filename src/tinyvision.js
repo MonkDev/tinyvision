@@ -493,7 +493,7 @@
         .empty()
         .append(items)
         .show()
-        .find('img').show().unveil();
+        .find('img').unveil();
     }
     else {
       self

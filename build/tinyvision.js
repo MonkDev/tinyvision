@@ -10973,7 +10973,7 @@ if ( typeof module === "object" && module && typeof module.exports === "object" 
         .empty()
         .append(items)
         .show()
-        .find('img').show().unveil();
+        .find('img').unveil();
     }
     else {
       self
