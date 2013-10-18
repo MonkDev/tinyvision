@@ -10627,8 +10627,8 @@ if ( typeof module === "object" && module && typeof module.exports === "object" 
       .initRefresh()
       .initItems()
       .showNotice('loading')
-      .request(function (data) {
-        self.showItems(data);
+      .request(function (response) {
+        self.showItems(response);
         self.scrollToSelected();
       });
 
@@ -10954,11 +10954,12 @@ if ( typeof module === "object" && module && typeof module.exports === "object" 
   /**
    * Build and show all items based on the supplied data.
    *
-   * @param  {Object[]} data Array of objects containing each item's data.
+   * @param  {(Array|Object)} response Response containing items data.
    * @return {Object} self
    */
-  self.showItems = function (data) {
-    var items = [];
+  self.showItems = function (response) {
+    var data = self.responseData(response),
+        items = [];
 
     if (data.length) {
       // Build each item and add the returned element to a holding array. This
@@ -10995,6 +10996,25 @@ if ( typeof module === "object" && module && typeof module.exports === "object" 
       .empty();
 
     return self;
+  };
+
+  /**
+   * Get the items data from the response. The array of objects can either be
+   * returned directly or embedded within the `data` attribute of an object.
+   *
+   * @param  {(Array|Object)} response Response data.
+   * @return {Object[]} Array of item data objects.
+   */
+  self.responseData = function (response) {
+    if ($.isArray(response)) {
+      return response;
+    }
+    else if ($.isPlainObject(response) && $.isArray(response.data)) {
+      return response.data;
+    }
+    else {
+      return [];
+    }
   };
 
   /**

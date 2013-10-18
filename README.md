@@ -70,6 +70,14 @@ JSON in the following format:
 ]
 ```
 
+Alternatively, the array of objects can be embedded in a `data` field:
+
+```json
+{
+  "data": [...]
+}
+```
+
 Each object represents a file and should contain three values:
 
 *   **imageUrl** is the URL to the thumbnail image that's displayed. This can be
@@ -128,6 +136,9 @@ Options
         example, the image plugin uses `image`, the link plugin uses `file`, and
         the media/video plugin uses `media`.
     *   **q** is the search value, which is empty when there's no search.
+
+    The response should be a JSON array of object as described in the "Usage"
+    section above. The array can also be embedded in a `data` field if desired.
 
     ```javascript
     tinymce.init({
