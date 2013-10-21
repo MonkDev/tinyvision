@@ -1,6 +1,8 @@
 module.exports = function (grunt) {
   'use strict';
 
+  var path = require('path');
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     banner: '/*!\n' +
@@ -23,9 +25,11 @@ module.exports = function (grunt) {
           'lib/jquery.scrollTo/jquery.scrollTo.js',
           'lib/jquery-throttle-debounce/jquery.ba-throttle-debounce.js',
           'lib/unveil/jquery.unveil.js',
+          'lib/handlebars.js/dist/handlebars.runtime.js',
+          'build/js/handlebars.templates.js',
           'src/<%= pkg.name %>.js'
         ],
-        dest: 'build/<%= pkg.name %>.js'
+        dest: 'build/js/<%= pkg.name %>.js'
       }
     },
     copy: {
@@ -37,6 +41,18 @@ module.exports = function (grunt) {
           '<%= pkg.name %>.html'
         ],
         dest: 'build/'
+      }
+    },
+    handlebars: {
+      build: {
+        options: {
+          namespace: 'Handlebars.templates',
+          processName: function (filePath) {
+            return path.basename(filePath, '.hbs');
+          }
+        },
+        src: 'src/templates/*.hbs',
+        dest: 'build/js/handlebars.templates.js'
       }
     },
     jshint: {
@@ -75,7 +91,7 @@ module.exports = function (grunt) {
         dest: 'build/plugin.min.js'
       },
       tinyvision: {
-        src: 'build/<%= pkg.name %>.js',
+        src: 'build/js/<%= pkg.name %>.js',
         dest: 'build/<%= pkg.name %>.min.js'
       }
     },
@@ -91,6 +107,10 @@ module.exports = function (grunt) {
       copy: {
         files: '<%= copy.build.src %>',
         tasks: 'copy'
+      },
+      handlebars: {
+        files: '<%= handlebars.build.src %>',
+        tasks: 'handlebars'
       },
       jshintGruntfile: {
         files: '<%= jshint.gruntfile.files.src %>',
@@ -115,10 +135,11 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('default', ['jshint', 'copy', 'concat', 'uglify', 'sass']);
+  grunt.registerTask('default', ['jshint', 'copy', 'sass', 'handlebars', 'concat', 'uglify']);
 
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-handlebars');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-uglify');

@@ -24,6 +24,7 @@
     "package.json"
   ],
   "dependencies": {
+    "handlebars.js": "~1.0.0",
     "jquery": "~1.10.2",
     "jquery-placeholder": "~2.0.7",
     "jquery.scrollTo": "~1.4.6",

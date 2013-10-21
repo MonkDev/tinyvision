@@ -4,9 +4,10 @@
  *
  * @param {Window} window Current window object.
  * @param {jQuery} $ jQuery library dependency.
+ * @param {Handlebars} Handlebars Handlebars library dependency.
  * @param {undefined} undefined Undefined value for convenience.
  */
-(function (window, $, undefined) {
+(function (window, $, Handlebars, undefined) {
   'use strict';
 
   /**
@@ -65,39 +66,46 @@
   self.type = self.params.type;
 
   /**
+   * Pre-compiled Handlebars templates.
+   *
+   * @type {Object}
+   */
+  self.templates = Handlebars.templates;
+
+  /**
    * Upload button.
    *
    * @type {jQuery}
    */
-  self.$upload = $('#upload');
+  self.$upload = $();
 
   /**
    * Search field.
    *
    * @type {jQuery}
    */
-  self.$search = $('#search');
+  self.$search = $();
 
   /**
    * Refresh button.
    *
    * @type {jQuery}
    */
-  self.$refresh = $('#refresh');
+  self.$refresh = $();
 
   /**
    * Notice container.
    *
    * @type {jQuery}
    */
-  self.$notice = $('#notice');
+  self.$notice = $();
 
   /**
    * Items list.
    *
    * @type {jQuery}
    */
-  self.$items = $('#items');
+  self.$items = $();
 
   /**
    * Default `tinyvision` config values.
@@ -142,9 +150,11 @@
 
     self
       .initStyle()
+      .initTemplate()
       .initUpload()
       .initSearch()
       .initRefresh()
+      .initNotice()
       .initItems()
       .showNotice('loading')
       .request(function (response) {
@@ -170,11 +180,24 @@
   };
 
   /**
+   * Initialize and display the application template.
+   *
+   * @return {Object} self
+   */
+  self.initTemplate = function () {
+    $('body').append(self.templates.application());
+
+    return self;
+  };
+
+  /**
    * Initialize the upload button.
    *
    * @return {Object} self
    */
   self.initUpload = function () {
+    self.$upload = $('#upload');
+
     if (self.options.upload) {
       self.$upload.on('click', self.triggerUpload);
     }
@@ -191,6 +214,8 @@
    * @return {Object} self
    */
   self.initSearch = function () {
+    self.$search = $('#search');
+
     if (self.options.search) {
       self.$search
         // Wait for a break in keystroke of 250ms before firing the request.
@@ -211,7 +236,19 @@
    * @return {Object} self
    */
   self.initRefresh = function () {
-    self.$refresh.on('click', self.requestAndShowItems);
+    self.$refresh = $('#refresh')
+      .on('click', self.requestAndShowItems);
+
+    return self;
+  };
+
+  /**
+   * Initialize the notice container.
+   *
+   * @return {Object} self
+   */
+  self.initNotice = function () {
+    self.$notice = $('#notice');
 
     return self;
   };
@@ -222,11 +259,12 @@
    * @return {Object} self
    */
   self.initItems = function () {
-    self.$items.on('click', 'a', function (event) {
-      event.preventDefault();
+    self.$items = $('#items')
+      .on('click', 'a', function (event) {
+        event.preventDefault();
 
-      self.toggleSelect($(this).parent());
-    });
+        self.toggleSelect($(this).parent());
+      });
 
     return self;
   };
@@ -438,29 +476,10 @@
    * @return {jQuery} New jQuery item element, unattached to the DOM.
    */
   self.buildItem = function (data) {
-    var $item = $('<li class="tv-item">'),
-        $link = $('<a href="#" class="tv-item-link">'),
-        $imageWrap = $('<div class="tv-item-image">'),
-        $image = $('<img>'),
-        $name = $('<div class="tv-item-name">'),
-        name = data.name || '(untitled)';
+    var $item = $(self.templates.item(data));
 
     // Store the data on the element for easy access.
     $item.data('tv.data', data);
-
-    $link
-      .attr('title', name)
-      .appendTo($item);
-
-    // Set the image URL as a data attribute so it's not loaded until it comes
-    // into view.
-    $image
-      .attr('data-src', data.imageUrl)
-      .appendTo($imageWrap);
-
-    $name.text(name);
-
-    $link.append($imageWrap, $name);
 
     // Select this item if its value matches the value of the TinyMCE field that
     // TinyVision was launched from.
@@ -583,4 +602,4 @@
 
   // Kick things off.
   self.init();
-})(window, jQuery);
+})(window, jQuery, Handlebars);
