@@ -6,14 +6,14 @@
   "authors": [
     "Monk Development, Inc."
   ],
-  "main": "build/tinyvision.js",
+  "main": "build/plugin.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/MonkDev/tinyvision.git"
   },
   "private": true,
   "ignore": [
-    "build/src",
+    "build/js",
     "lib",
     "node_modules",
     "src",
