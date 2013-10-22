@@ -1,7 +1,12 @@
 /*!
  * TinyVision v1.0.0
+ *
+ * A visual file selector for TinyMCE v4.
+ *
  * https://github.com/MonkDev/tinyvision
+ *
  * Copyright 2013 by Monk Development, Inc.
+ * Licensed MIT
  */
 /**
  * TinyVision plugin for TinyMCE. Primarily handles launching the window with
