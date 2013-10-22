@@ -14,6 +14,9 @@ uploading or editing, removing red eye or adding borders. Just selecting.
 TinyVision works purely with JSON, and files can be stored anywhere that's URL
 accessible. We think you'll find it delightful.
 
+Developed by [Monk Development](http://monkdev.com) for the
+[Ekklesia 360](http://ekklesia360.com) CMS.
+
 Download
 --------
 
