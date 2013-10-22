@@ -20,9 +20,16 @@ Developed by [Monk Development](http://monkdev.com) for the
 Download
 --------
 
-Head over to the [releases](https://github.com/MonkDev/tinyvision/releases) and
+Head over to [releases](https://github.com/MonkDev/tinyvision/releases) and
 download a production-ready `tinyvision.zip` package. Unzip to your TinyMCE
 `plugins` directory (or wherever you store TinyMCE plugins).
+
+### Bower
+
+[Bower](http://bower.io) is a package manager for the web. Once installed, Bower
+can install TinyVision with a single command:
+
+    bower install tinyvision
 
 Usage
 -----
