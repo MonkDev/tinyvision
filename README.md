@@ -14,13 +14,12 @@ uploading or editing, removing red eye or adding borders. Just selecting.
 TinyVision works purely with JSON, and files can be stored anywhere that's URL
 accessible. We think you'll find it delightful.
 
-*   [Release Notes](https://github.com/MonkDev/tinyvision/releases)
-
 Download
 --------
 
-Copy the `build` directory into your TinyMCE `plugins` directory (or wherever
-you store TinyMCE plugins) and rename `tinyvision`.
+Head over to the [releases](https://github.com/MonkDev/tinyvision/releases) and
+download a production-ready `tinyvision.zip` package. Unzip to your TinyMCE
+`plugins` directory (or wherever you store TinyMCE plugins).
 
 Usage
 -----
