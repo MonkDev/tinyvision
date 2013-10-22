@@ -31,7 +31,8 @@ endpoint that returns the files to display.
 ### TinyMCE config
 
 Configuring TinyMCE to use TinyVision is simple: add `tinyvision` to the list of
-`plugins` and a `tinyvision` object with TinyVision-specific options:
+`plugins` (or `external_plugins` if stored outside of the TinyMCE directory) and
+a `tinyvision` object with TinyVision-specific options:
 
 ```javascript
 tinymce.init({
