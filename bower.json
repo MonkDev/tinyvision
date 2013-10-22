@@ -1,17 +1,7 @@
 {
   "name": "tinyvision",
   "version": "1.0.0",
-  "description": "A visual file selector for TinyMCE v4.",
-  "homepage": "https://github.com/MonkDev/tinyvision",
-  "authors": [
-    "Monk Development, Inc."
-  ],
   "main": "build/plugin.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/MonkDev/tinyvision.git"
-  },
-  "private": true,
   "ignore": [
     "build/js",
     "lib",
