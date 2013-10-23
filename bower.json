@@ -1,0 +1,13 @@
+{
+  "name": "tinyvision-example",
+  "version": "1.0.0",
+  "main": "index.html",
+  "ignore": [
+    ".bowerrc"
+  ],
+  "dependencies": {
+    "normalize-css": "~2.1.3",
+    "tinyvision": "~1.0.0"
+  },
+  "private": true
+}
