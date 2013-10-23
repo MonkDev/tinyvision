@@ -17,6 +17,9 @@ accessible. We think you'll find it delightful.
 Developed by [Monk Development](http://monkdev.com) for the
 [Ekklesia 360](http://ekklesia360.com) CMS.
 
+*   [Example](http://monkdev.github.io/tinyvision)
+*   [Release Notes](https://github.com/MonkDev/tinyvision/releases)
+
 Download
 --------
 
