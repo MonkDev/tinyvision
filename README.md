@@ -162,6 +162,35 @@ Options
     ```
 
     ----------------------------------------------------------------------------
+*   **dataTransform** _function, null_
+
+    A function to transform the data received from `source` before consumption.
+    This function accepts a `data` argument which will be the data returned from
+    `source`. In certain instances where you do not have the ability to control
+    how the data coming from `source`, this function allow you to modify the
+    data before consumption.
+
+    If you are going to use this option you MUST return a JSON array or object
+    as described in the "Usage" section above. The array can also be embedded
+    in a `data` field if desired.
+
+    ```javascript
+    tinymce.init({
+      tinyvision: {
+        source: '/media/tinyvision.json'
+      },
+      dataTransform: function(data) {
+        /* do whatever you want with data to conform to specs above */
+
+        // make sure to return data when done
+        return data;
+      }
+
+    });
+    ```
+
+
+
 *   **style** _string, null_
 
     An optional style sheet URL for custom styling. While TinyVision comes with
