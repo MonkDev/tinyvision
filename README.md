@@ -153,9 +153,6 @@ Options
     The response should be a JSON array of object as described in the "Usage"
     section above. The array can also be embedded in a `data` field if desired.
 
-		Additionally, if you do not have any control of the data format returned
-		from `source`, you can use the optional `dataTranform` hook. See below.
-
     ```javascript
     tinymce.init({
       tinyvision: {
