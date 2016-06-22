@@ -545,10 +545,10 @@
    * @return {Object[]} Array of item data objects.
    */
   self.responseData = function (response) {
-		var dataTransformFn = self.params.options.dataTransform;
-		if (dataTransformFn && typeof dataTransformFn === 'function') {
-			return dataTransformFn.apply(this, [response]);
-		}
+    var dataTransformFn = self.params.options.dataTransform;
+    if (dataTransformFn && typeof dataTransformFn === 'function') {
+      return dataTransformFn.apply(this, [response]);
+    }
     else if ($.isArray(response)) {
       return response;
     }
