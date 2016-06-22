@@ -433,7 +433,7 @@
         offset: { top: -self.$items.offset().top }
       });
     }
-    
+
     return $selected;
   };
 
@@ -545,7 +545,11 @@
    * @return {Object[]} Array of item data objects.
    */
   self.responseData = function (response) {
-    if ($.isArray(response)) {
+		var dataTransformFn = self.params.options.dataTransform;
+		if (dataTransformFn && typeof dataTransformFn === 'function') {
+			return dataTransformFn.apply(this, [response]);
+		}
+    else if ($.isArray(response)) {
       return response;
     }
     else if ($.isPlainObject(response) && $.isArray(response.data)) {
